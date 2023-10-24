@@ -1,0 +1,54 @@
+<style>
+   body {
+      background-color: gray;
+   }
+   .form-container {
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 15px;
+      padding: 20px;
+   }
+ </style>
+<body>
+    <div class="container col-md-8 mt-3 form-container">
+        <form action="/toy/add" method="post">
+            <h1 class="text-dark text-center mb-4">Add New Toy</h1>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" name="name" required minlength="3" maxlength="30">
+        </div>
+   <div class="form-group mt-3">
+      <label for="type" class="text-primary">Type</label>
+      <input class="form-control" type="text" name="type" required minlength="3" maxlength="30">
+   </div>
+   <div class="form-group mt-3">
+      <label for="age_range" class="text-primary">Age Range</label>
+      <input class="form-control" type="text" name="age_range" required>
+   </div>
+   <div class="form-group mt-3">
+      <label for ="manufacturer"class ="text-primary">Manufacturer</label>
+      <input class ="form-control"type ="text"name ="manufacturer"required>
+   </div>
+   <div class ="form-group mt-3">
+      <label for ="price"class ="text-primary">Price</label>
+      <input class ="form-control"type ="number"name ="price"required min="0"> 
+   </div>
+   <div class="form-group mt-3">
+                <label for="image" class="text-primary">Image URL</label>
+                <input class="form-control" type="url" name="image" required>
+            </div>
+            <div class="form-group mt-3">
+    <label class="text-primary">In Stock</label>
+    <div>
+        <label><input type ="radio" name ="in_stock" value ="true"> Yes</label>
+        <label><input type ="radio" name ="in_stock" value ="false"> No</label>
+    </div>
+      </div>
+            <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-lg mr-2">Add</button>
+            <button type="reset" class="btn btn-secondary btn-lg">Clear</button>
+            <a href="/toy" class="btn btn-light btn-lg">Back</a>
+        </div>
+      </form>
+    </div>
+</body>

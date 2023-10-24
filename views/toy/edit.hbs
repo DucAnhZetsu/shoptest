@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: gray;
+        }
+        .form-container {
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .center-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+    <script>
+        function updateImage() {
+            var imageUrl = document.getElementById('image-url').value;
+            document.getElementById('toy-image').src = imageUrl;
+        }
+    </script>
+</head>
+<body>
+    <div class="container col-md-8 mt-3 form-container">
+        <form action="/toy/edit/{{toy._id}}" method="post">
+            <h1 class="text-dark text-center mb-4">Update Toy</h1>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <img id="toy-image" src="{{toy.image}}" alt="{{toy.name}}" class="center-image" />
+                <input id="image-url" class ="form-control"type ="url"name ="image"value="{{toy.image}}"required onchange="updateImage()"> 
+            </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" name="name" value="{{toy.name}}" required minlength="3" maxlength="30">
+        </div>
+<div class="form-group mt-3">
+        <label for="type" class="text-primary">Type</label>
+        <input class="form-control" type="text" name="type" value="{{toy.type}}" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="age_range" class="text-primary">Age Range</label>
+        <input class="form-control" type="text" name="age_range" value="{{toy.age_range}}" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="manufacturer" class="text-primary">Manufacturer</label>
+        <input class="form-control" type="text" name="manufacturer" value="{{toy.manufacturer}}" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="price" class="text-primary">Price</label>
+        <input class="form-control" type="number" name="price" value="{{toy.price}}" required min="0">
+    </div>
+<div class="form-group mt-3">
+            <label for="in_stock" class="text-primary">In Stock</label>
+            <br>
+            <input type ="radio" name ="in_stock" value ="true" {{#if toy.in_stock}}checked{{/if}}> Yes
+            <input type ="radio" name ="in_stock" value ="false" {{#unless toy.in_stock}}checked{{/unless}}> No
+        </div>
+<div class="form-group mt-3 mb-3 text-center">
+        <input class="btn btn-primary" type="submit" value="Update">
+        <input class="btn btn-success" type="reset" value="Clear">
+        <a href="/toy" class="btn btn-light btn-lg">Back</a>
+    </div>
+</form>
+</div>
+</body>
+</html>

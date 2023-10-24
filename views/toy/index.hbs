@@ -1,0 +1,96 @@
+<style>
+   body {
+      background-image: url(https://www.tokyo-odaiba.net/en/wp-content/uploads/sites/2/2018/11/popup_zone01.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+   }
+   .nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            background-color: #5c6167;
+            border-radius: 15px;
+            justify-content: space-between;
+        }
+        .nav-item {
+            text-transform: capitalize;
+            color: black !important;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-item:first-child {
+            margin-right: auto;
+        }
+   .form-container {
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 15px;
+      padding: 20px;
+   }
+   .table-bordered th, .table-bordered td {
+      border: 2px solid black;
+   }
+   .toy-heading {
+      font-size: 3em; /* Increase font size */
+      color: rgb(252, 252, 252); /* Change color*/
+      text-shadow: none;
+   }
+</style>
+<head>
+    <ul class="nav mt-3 mb-3">
+        <li class="nav-item h2">
+            <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item h2">
+            <a class="nav-link" href="/employee">Employee</a>
+        </li>
+        <li class="nav-item h2">
+            <a class="nav-link" href="/toy">Toy</a>
+        </li>
+    </ul>
+</head>
+<div class="container text-center">
+   <h1 class="toy-heading">Toy List</h1>
+   <div class="table-container">
+       <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+             <tr>
+               <th>Name</th>
+               <th>Type</th>
+               <th>Age Range</th>
+               <th>Manufacturer</th>
+               <th>Price</th>
+               <th>In Stock</th>
+               <th>Image</th>
+               <th>Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            {{#each toys }}
+         <tr>
+         <td>{{ name }}</td>
+         <td>{{ type }}</td>
+         <td>{{ age_range }}</td>
+         <td>{{ manufacturer }}</td>
+         <td>{{ price }}</td>
+         <td>{{#if in_stock}}Yes{{else}}No{{/if}}</td> 
+         <td><img src="{{ image }}" width="150" height="150"></td> 
+         <td><a class="btn btn-warning btn-sm" href="/toy/edit/{{ _id }}">Edit</a> 
+            <a class="btn btn-danger btn-sm" href="/toy/delete/{{ _id }}" onclick="return confirm('Are you sure to delete this toy ?');">Delete</a>
+            <!-- Add a "View Details" button -->
+            <a class="btn btn-info btn-sm" href="/toy/detail/{{ _id }}">View Details</a></td> 
+            </tr> 
+            {{/each}}
+         </tbody> 
+         </table> 
+      </div>
+      <div class="text-center mt-3">
+         <a class="btn btn-primary btn-lg btn-block" href="/toy/add">Add Toy</a>
+      </div>
+   </div>
+</body>   
+</html> 

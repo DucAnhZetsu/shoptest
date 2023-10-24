@@ -1,2 +1,35 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container text-center col-md-8">
+   <!-- Login Form -->
+   <form action="/user/login" method="post" class="card p-3 bg-light">
+      <h1 class="text text-uppercase text-center text-danger">User Login</h1>
+      <div class="form-group mt-3">
+         <label class="h3 text-success" for="">Username</label>
+         <input class="form-control" type="text" name="username" id="" required>
+      </div>
+      <div class="form-group mt-3">
+         <label class="h3 text-success" for="">Password</label>
+         <input class="form-control" type="password" name="password" id="" required>
+      </div>
+      <div class="form-group mt-3">
+         <input class="btn btn-primary" type="submit" value="Login">
+         <input class="btn btn-warning" type="reset" value="Clear">
+      </div>
+   </form>
+
+   <!-- Registration Form -->
+   <form action="/user/register" method="post" class="card p-3 bg-light mt-5">
+      <h1 class="text text-uppercase text-center text-danger">User Registration</h1>
+      <div class="form-group mt-3">
+         <label class="h3 text-success" for="">Username</label>
+         <input class="form-control" type="text" name="username" id="" required>
+      </div>
+      <div class="form-group mt-3">
+         <label class="h3 text-success" for="">Password</label>
+         <input class="form-control" type="password" name="password" id="" required>
+      </div>
+      <div class="form-group mt-3">
+         <input class="btn btn-primary" type="submit" value="Register">
+         <input class="btn btn-warning" type="reset" value="Clear">
+      </div>
+   </form>
+</div>

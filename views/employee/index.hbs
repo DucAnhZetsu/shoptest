@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+            body {
+        background-image: url(https://static.vecteezy.com/system/resources/previews/004/941/847/original/cosmetic-background-for-product-branding-and-packaging-presentation-geometry-form-circle-molding-on-podium-stage-with-shadow-of-leaf-background-design-eps10-vector.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            background-color: #5c6167;
+            border-radius: 15px;
+            justify-content: space-between;
+        }
+        .nav-item {
+            text-transform: capitalize;
+            color: black !important;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-item:first-child {
+            margin-right: auto;
+        }
+        .form-container {
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 15px;
+        padding: 20px;
+        }
+        .table-bordered th, .table-bordered td {
+        border: 2px solid black;
+    }
+        .employee-heading {
+            font-size: 2.5em;
+            color: black;
+            text-shadow: none;
+        }
+        /* Add styles for the navigation bar */
+    </style>
+</head>
+<body>
+   <ul class="nav mt-3 mb-3">
+        <li class="nav-item h2">
+            <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item h2">
+            <a class="nav-link" href="/employee">Employee</a>
+        </li>
+        <li class="nav-item h2">
+            <a class="nav-link" href="/toy">Toy</a>
+        </li>
+    </ul>
+
+<div class="container text-center">
+   <h1 class="employee-heading">Employee List</h1>
+   <div class="table-container">
+       <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+             <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Date of Birth</th>
+                <th>GPA</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Image</th>
+                <th>Actions</th>
+             </tr>
+          </thead>
+          <tbody>
+             {{#each employees }}
+             <tr>
+                <td><strong>{{ name }}</strong></td>
+                <td>{{ age }}</td>
+                <td>{{ dateFormat dob "DD/MM/YYYY" }}</td>
+                <td>{{ gpa }}</td>
+                <td>{{ gender }}</td>
+                <td>{{ email }}</td>
+                <td><img src="{{ image }}" alt="{{ name }}'s image" width="150" height="150"></td> 
+                <td>
+                <a class="btn btn-warning btn-sm" href="/employee/edit/{{ _id }}">Edit</a> 
+                <a class="btn btn-danger btn-sm" href="/employee/delete/{{ _id }}" onclick="return confirm('Are you sure to delete this employee ?');">Delete</a>
+                <a class="btn btn-info btn-sm" href="/employee/detail/{{ _id }}">View Details</a>
+                </td> 
+             </tr> 
+             {{/each}}
+          </tbody> 
+       </table> 
+    </div>
+    <div class="text-center mt-3">
+       <a class="btn btn-primary btn-lg btn-block" href="/employee/add">Add Employee</a>
+    </div>
+</div>

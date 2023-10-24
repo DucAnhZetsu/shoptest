@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var StudentSchema = mongoose.Schema(
+var EmployeeSchema = mongoose.Schema(
    {
       name: {
          type: String,
@@ -7,20 +7,29 @@ var StudentSchema = mongoose.Schema(
       },
       
       age: {
-         type: Int32Array,
+         type: Number,
          min: [0, 'Age can not be negative'],
          max: 99
+      },
+      dob: Date,
+      gpa: {
+         type: Number,
+         min: [0, 'GPA can not be negative'],
+         max: 10
       },
       gender: {
          type: String,
          enum: ['Male', 'Female']
       },
       email: {
-        type: String,
-        required: [true, 'email can not be empty']
-     },
-     
+         type: String,
+         required: [true, 'email can not be empty']
+      },
+      image: {
+         type: String,
+         required: [true, 'Image URL can not be empty']
+      }
    }
 );
-var EmployeeModel = mongoose.model('employee', StudentSchema, 'employee');
+var EmployeeModel = mongoose.model('employee', EmployeeSchema, 'employee');
 module.exports = EmployeeModel;

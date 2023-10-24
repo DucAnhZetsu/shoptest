@@ -1,72 +1,71 @@
 var express = require('express');
 var router = express.Router();
 
-const StudentModel = require('../models/StudentModel');
+var ToyModel = require('../model/ToyModel');
 
-// URL : localhost:3001/student
 router.get('/', async (req, res) => {
-   // SQL : SELECT * FROM student
-   var students = await StudentModel.find();
-   //res.send(students);
-   // render ra file view : views/student/index.hbs và gửi kèm data thông qua biến 'students'
-   res.render('student/index', { students: students });
-})
+   var toys = await ToyModel.find();
+   res.render('toy/index', { toys: toys });
+});
+
+router.get('/add', (req, res) => {
+   res.render('toy/add');
+});
+
+router.post('/add', async (req, res) => {
+   var toy = req.body;
+   await ToyModel.create(toy);
+   console.log('Add toy succeed !');
+   res.redirect('/toy');
+});
 
 router.get('/detail/:id', async (req, res) => {
    var id = req.params.id;
-   // SELECT * FROM student WHERE id = 'id'
-   var student = await StudentModel.findById(id);
-   res.render('student/detail', { student: student });
-})
+   var toy = await ToyModel.findById(id);
+   res.render('toy/detail', { toy: toy });
+});
+
+router.get('/detail/:id', async (req, res) => {
+   var id = req.params.id;
+   var toy = await ToyModel.findById(id);
+   res.render('toy/detail', { toy: toy });
+});
 
 router.get('/delete/:id', async (req, res) => {
    var id = req.params.id;
-   await StudentModel.findByIdAndDelete(id);
-   console.log('Delete student succeed');
-   res.redirect('/student');
-})
-
-router.get('/add', (req, res) => {
-   res.render('student/add');
-})
-
-router.post('/add', async (req, res) => {
-   var student = req.body;
-   await StudentModel.create(student);
-   console.log('Add student succeed !');
-   res.redirect('/student');
-})
+   await ToyModel.findByIdAndDelete(id);
+   console.log('Delete toy succeed');
+   res.redirect('/toy');
+});
 
 router.get('/edit/:id', async (req, res) => {
    var id = req.params.id;
-   var student = await StudentModel.findById(id);
-   res.render('student/edit', { student: student })
+   var toy = await ToyModel.findById(id);
+   res.render('toy/edit', { toy: toy })
 })
 
 router.post('/edit/:id', async (req, res) => {
    var id = req.params.id;
-   var student = req.body;
-   await StudentModel.findByIdAndUpdate(id, student);
-   console.log('Update student succeed !');
-   res.redirect('/student');
+   var toy = req.body;
+   await ToyModel.findByIdAndUpdate(id, toy);
+   console.log('Update toy succeed !');
+   res.redirect('/toy');
 })
 
 router.post('/search', async (req, res) => {
    var keyword = req.body.name;
-   //relative search
-   var students = await StudentModel.find({ name: new RegExp(keyword, "i") });
-   res.render('student/index', { students: students });
+   var toys = await ToyModel.find({ name: new RegExp(keyword, "i") });
+   res.render('toy/index', { toys: toys });
 })
 
 router.get('/nameasc', async (req, res) => {
-   //1: ascending,  -1: descending
-   var students = await StudentModel.find().sort({ name: 1 });
-   res.render('student/index', { students: students });
+   var toys = await ToyModel.find().sort({ name: 1 });
+   res.render('toy/index', { toys: toys });
 })
 
 router.get('/namedesc', async (req, res) => {
-   var students = await StudentModel.find().sort({ name: -1 });
-   res.render('student/index', { students: students });
+   var toys = await ToyModel.find().sort({ name: -1 });
+   res.render('toy/index', { toys: toys });
 })
 
 module.exports = router;

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            /* Replace 'background-image-url' URL */
+            background-image: url(https://www.tokyo-odaiba.net/en/wp-content/uploads/sites/2/2018/11/popup_zone01.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .toy-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 3px solid black; 
+            width: 500px; /* Increase width */
+            height: 500px; /* Increase height */
+        }
+        .card {
+            background-color: #e5d3af; /* Adjust color*/
+            padding: 20px;
+            border-radius: 15px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
+            width: 80%; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        .back-button {
+            display: block;
+            width: 100px;
+            height: 50px;
+            margin: 20px auto;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+   <div class="card">
+      <!-- image at the top of the card -->
+      <img class="toy-image" src="{{toy.image}}" alt="this is toy image">
+      <h1 class="text-center bg-success">Thông tin đồ chơi</h1>
+      <table>
+          <tr><th>Tên:</th><td>{{ toy.name }}</td></tr>
+          <tr><th>Loại:</th><td>{{ toy.type }}</td></tr>
+          <tr><th>Độ tuổi:</th><td>{{ toy.age_range }}</td></tr>
+          <tr><th>Nhà sản xuất:</th><td>{{ toy.manufacturer }}</td></tr>
+          <tr><th>Giá:</th><td>{{ toy.price }}</td></tr>
+          <tr><th>Còn hàng:</th><td>{{#if toy.in_stock}}Có{{else}}Không{{/if}}</td></tr>
+         
+      </table>
+      <button class="back-button" onclick="window.history.back();">Back</button>
+   </div>
+</body>
+</html>

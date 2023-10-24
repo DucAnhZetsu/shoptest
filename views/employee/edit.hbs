@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            /* Replace 'background-image-url' with your actual URL */
+            background-image: url('https://static.vecteezy.com/system/resources/previews/004/941/847/original/cosmetic-background-for-product-branding-and-packaging-presentation-geometry-form-circle-molding-on-podium-stage-with-shadow-of-leaf-background-design-eps10-vector.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .form-container {
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .table-bordered th, .table-bordered td {
+            border: 2px solid black;
+        }
+        .center-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+    <script>
+        function updateImage() {
+            var imageUrl = document.getElementById('image-url').value;
+            document.getElementById('employee-image').src = imageUrl;
+        }
+    </script>
+</head>
+<body>
+    <div class="container col-md-8 mt-3 form-container">
+        <form action="/employee/edit/{{employee._id}}" method="post">
+            <h1 class="text-dark text-center mb-4">Update Employee</h1>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <img id="employee-image" src="{{employee.image}}" alt="{{employee.name}}" class="center-image" />
+                <input id="image-url" class ="form-control"type ="url"name ="image"value="{{employee.image}}"required onchange="updateImage()"> 
+            </div>
+            <!-- Rest of your code -->
+            <div class ="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" value="{{employee.name}}" required minlength="3" maxlength="30">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input class="form-control" type="number" name="age" value="{{employee.age}}" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input class="form-control" type="date" name="dob" value="{{dateFormat employee.dob 'YYYY-MM-DD'}}" required>
+            </div>
+            <div class="form-group">
+                <label for="gpa">GPA</label>
+                <input class="form-control" type="number" name="gpa" value="{{employee.gpa}}" required min="0" max="10">
+            </div>
+            <div class="form-group">
+                <label for ="gender">Gender</label>
+                <br>
+                <input type ="radio"name ="gender"value ="Male" {{#if (eq employee.gender 'Male')}}checked{{/if}}> Male
+                <input type ="radio"name ="gender"value ="Female" {{#if (eq employee.gender 'Female')}}checked{{/if}}> Female
+            </div>
+            <div class ="form-group">
+                <label for ="email">Email</label>
+                <input class ="form-control"type ="email"name ="email"value="{{employee.email}}"required>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg mr-2">Update</button>
+                <button type="reset" class="btn btn-secondary btn-lg">Clear</button>
+                <a href="/employee" class="btn btn-light btn-lg">Back</a>
+            </div>
+        </form>
+    </div>
+</body>   
+</html> 
