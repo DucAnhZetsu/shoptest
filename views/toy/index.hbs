@@ -10,21 +10,21 @@
             justify-content: center;
             align-items: center;
             border: 1px solid black;
-            background-color: #5c6167;
+            background-color: #efefef;
             border-radius: 15px;
             justify-content: space-between;
-        }
-        .nav-item {
+      }
+      .nav-item {
             text-transform: capitalize;
             color: black !important;
             padding: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .nav-item:first-child {
+      }
+      .nav-item:first-child {
             margin-right: auto;
-        }
+      }
    .form-container {
       background-color: white;
       border: 2px solid black;
@@ -39,6 +39,19 @@
       color: rgb(252, 252, 252); /* Change color*/
       text-shadow: none;
    }
+   .out-of-stock {
+   text-decoration: line-through;
+   color: red;
+   }
+   .in-stock {
+    color: green;
+}
+
+.not-in-stock {
+    color: red;
+}
+
+
 </style>
 <head>
    <ul class="nav mt-3 mb-3">
@@ -67,22 +80,28 @@
             </tr>
          </thead>
          <tbody>
-            {{#each toys }}
-         <tr>
-         <td>{{ name }}</td>
-         <td>{{ type }}</td>
-         <td>{{ age_range }}</td>
-         <td>{{ manufacturer }}</td>
-         <td>{{ price }}</td>
-         <td>{{#if in_stock}}Yes{{else}}No{{/if}}</td> 
-         <td><img src="{{ image }}" width="150" height="150"></td> 
-         <td><a class="btn btn-warning btn-sm" href="/toy/edit/{{ _id }}">Edit</a> 
+    {{#each toys }}
+    <tr class="{{#unless in_stock}}out-of-stock{{/unless}}">
+        <td>{{ name }}</td>
+        <td>{{ type }}</td>
+        <td>{{ age_range }}</td>
+        <td>{{ manufacturer }}</td>
+        <td>{{ price }}</td>
+        <!-- Apply the new classes here -->
+        <td class="{{#if in_stock}}in-stock{{else}}not-in-stock{{/if}}">{{#if in_stock}}Yes{{else}}No{{/if}}</td> 
+        <td><img src="{{ image }}" width="150" height="150"></td> 
+        <td>
+            <a class="btn btn-warning btn-sm" href="/toy/edit/{{ _id }}">Edit</a> 
             <a class="btn btn-danger btn-sm" href="/toy/delete/{{ _id }}" onclick="return confirm('Are you sure to delete this toy ?');">Delete</a>
             <!-- Add a "View Details" button -->
-            <a class="btn btn-info btn-sm" href="/toy/detail/{{ _id }}">View Details</a></td> 
-            </tr> 
-            {{/each}}
-         </tbody> 
+            <a class="btn btn-info btn-sm" href="/toy/detail/{{ _id }}">View Details</a>
+        </td> 
+    </tr> 
+    {{/each}}
+</tbody>
+
+
+
          </table> 
       </div>
       <div class="text-center mt-3">

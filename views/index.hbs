@@ -4,9 +4,9 @@
     <title>Home Page</title>
     <style>
         body {
-        background-image: url(https://www.tokyo-odaiba.net/en/wp-content/uploads/sites/2/2018/11/popup_zone01.png);
-        background-repeat: no-repeat;
-        background-size: cover;
+            background-image: url(https://t4.ftcdn.net/jpg/03/82/89/63/360_F_382896342_20jSBLU4tivgzgRjpTTHNwvzdcX2ADa3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         .nav {
             width: 100%;
@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             border: 1px solid black;
-            background-color: #5c6167;
+            background-color: #dfe3e9;
             border-radius: 15px;
             justify-content: space-between;
         }
@@ -30,64 +30,69 @@
             margin-right: auto;
         }
         .form-container {
-        background-color: white;
-        border: 2px solid black;
-        border-radius: 15px;
-        padding: 20px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 20px;
         }
         .table-bordered th, .table-bordered td {
-        border: 2px solid black;
+            border: 2px solid black;
         }
-        .toy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1em;
-            padding: 1em;
+        .ad img { /* Adjust the size of the images */
+            width: 100%; /* Medium size */
+            height: auto; /* Keep aspect ratio */
         }
-        .toy-item {
-        border: 1px solid #333;
-        padding: 1em;
-        position: relative;
-        border-radius: 15px; /*the corners rounded */
-        box-shadow: 0 0 10px rgba(0,0,0,0.2); /*slight depth effect */
-        background-color: #e5d3af; /* wood-like color */
+        .ad {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: auto; /* Center the ads */
         }
-        .toy-item button {
-            background-color: #4CAF50; /* Green */
-            border: none;
+        .ads-container {
+            display: flex;
+            justify-content: center; /* Center the ads */
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #0f0f0f;
             color: white;
-            padding: 15px 32px;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
+            padding: 10px 0;
         }
+        .landscape img { /* Adjust the size of the landscape image */
+        width: 100%; /*  size */
+        height: auto;
+    }
     </style>
-    
 </head>
 <body>
     <ul class="nav mt-3 mb-3">
         <li class="nav-item h2">
-            <a class="nav-link" href="/home">Home</a>
-        </li>
+           <a class="nav-link" href="/home">Home</a>
+       </li>
         
-        <li class="nav-item h2">
-            <a class="nav-link" href="/admin">ADMIN</a>
-        </li>
+       <li class="nav-item h2">
+           <a class="nav-link" href="/admin">ADMIN</a>
+       </li>
     </ul>
-
-    <div class="toy-grid">
-        {{#each toys}}
-        <div class="toy-item">
-            <img src="{{this.image}}" alt="{{this.name}}" width="100%">
-            <h2>{{this.name}}</h2>
-            <!-- Add a slash before the toy's ID in the URL -->
-            <button onclick="window.location.href='toy/detail/{{this._id}}'">View Details</button>
-            <p>{{this.description}}</p>
-        </div>
-        {{/each}}
+    <div class="ads-container">
+       <div class="ad">
+           <img src="https://file.hstatic.net/1000231532/file/mua_gundam_rg_hcm_nshop_df9038231e854f6daf61aa3e8b6113a1_grande.png" alt="Preview Prodcut">
+       </div>
+       <div class="ad">
+           <img src="https://file.hstatic.net/1000231532/file/mua_gundam_pg_nshop_hcm_0a4d3ab80cea42fbb8903b046642bb75_grande.png" alt="Preview Product">
+       </div>
+       <div class="ad">
+           <img src="https://file.hstatic.net/1000231532/file/mua_gundam_rg_hcm_nshop_df9038231e854f6daf61aa3e8b6113a1_grande.png" alt="Preview Prodcut">
+       </div>
+    </div>
+    <div class="ad landscape">
+    <img src="https://annaclegg.myblog.arts.ac.uk/files/2018/01/IMG_3141.jpg" alt="Landscape Image">
+    </div>
+    <div class="footer">
+       Contact us at <a href="https://tuyensinh.greenwich.edu.vn">leducanh@gmail.com</a>.
     </div>
 </body>
 </html>
