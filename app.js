@@ -11,6 +11,9 @@ var employeeRouter = require('./routes/employee');
 var toyRouter = require('./routes/toy');
 var homeRouter = require('./routes/home');
 var adminRoutes = require('./routes/admin');
+var carRouter = require('./routes/car');
+
+
 
 var hbs = require('hbs');
 var Handlebars = require('handlebars');
@@ -73,6 +76,7 @@ app.use('/users', usersRouter);
 app.use('/admin', adminRoutes);
 app.use('/employee', employeeRouter);
 app.use('/toy', toyRouter);
+app.use('/car', carRouter);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
