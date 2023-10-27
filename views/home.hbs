@@ -65,6 +65,33 @@
             cursor: pointer;
             border-radius: 15px;
         }
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1em;
+            padding: 1em;
+        }
+        .car-item {
+        border: 1px solid #333;
+        padding: 1em;
+        position: relative;
+        border-radius: 15px; /*the corners rounded */
+        box-shadow: 0 0 10px rgba(0,0,0,0.2); /*slight depth effect */
+        background-color: #e5d3af;
+        }
+        .car-item button {
+            background-color: #4866ee; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
 
         .in-stock {
         background-color: rgb(97, 229, 97);
@@ -109,7 +136,19 @@
         <p>{{this.description}}</p>
     </div>
     {{/each}}
+    {{#each cars}}
+    <div class="car-item {{#if this.in_stock}}in-stock{{else}}out-of-stock{{/if}}">
+        <img src="{{this.image}}" alt="{{this.name}}" width="100%">
+        <h2>{{this.name}}</h2>
+        <!-- Add a slash before the car's ID in the URL -->
+        <button onclick="window.location.href='car/detail/{{this._id}}'">View Details</button>
+        <p>{{this.description}}</p>
     </div>
+    {{/each}}
+</div>
+
+
+
 
 
 
