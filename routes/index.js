@@ -5,6 +5,7 @@ var router = express.Router();
 const UserModel = require('../model/UserModel');
 const ToyModel = require('../model/ToyModel');
 const EmployeeModel = require('../model/EmployeeModel');
+const CarModel = require('../model/CarModel');
 // Route for the home page
 router.get('/', (req, res) => {
   console.log('GET /');
