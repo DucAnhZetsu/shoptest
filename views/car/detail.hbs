@@ -34,7 +34,7 @@
    .table-bordered th, .table-bordered td {
       border: 2px solid black;
    }
-   .toy-heading {
+   .car-heading {
       font-size: 3em; /* Increase font size */
       color: rgb(252, 252, 252); /* Change color*/
       text-shadow: none;
@@ -64,7 +64,7 @@
    </ul>
 </head>
 <div class="container text-center">
-   <h1 class="toy-heading">Toy List</h1>
+   <h1 class="car-heading">car List</h1>
    <div class="table-container">
       <table class="table table-striped table-bordered">
          <thead class="thead-dark">
@@ -80,7 +80,7 @@
             </tr>
          </thead>
          <tbody>
-    {{#each toys }}
+    {{#each cars }}
     <tr class="{{#unless in_stock}}out-of-stock{{/unless}}">
         <td>{{ name }}</td>
         <td>{{ type }}</td>
@@ -91,10 +91,10 @@
         <td class="{{#if in_stock}}in-stock{{else}}not-in-stock{{/if}}">{{#if in_stock}}Yes{{else}}No{{/if}}</td> 
         <td><img src="{{ image }}" width="150" height="150"></td> 
         <td>
-            <a class="btn btn-warning btn-sm" href="/toy/edit/{{ _id }}">Edit</a> 
-            <a class="btn btn-danger btn-sm" href="/toy/delete/{{ _id }}" onclick="return confirm('Are you sure to delete this toy ?');">Delete</a>
+            <a class="btn btn-warning btn-sm" href="/car/edit/{{ _id }}">Edit</a> 
+            <a class="btn btn-danger btn-sm" href="/car/delete/{{ _id }}" onclick="return confirm('Are you sure to delete this car ?');">Delete</a>
             <!-- Add a "View Details" button -->
-            <a class="btn btn-info btn-sm" href="/toy/detail/{{ _id }}">View Details</a>
+            <a class="btn btn-info btn-sm" href="/car/detail/{{ _id }}">View Details</a>
         </td> 
     </tr> 
     {{/each}}
@@ -102,11 +102,11 @@
 
 
 
-         </table> 
-      </div>
-      <div class="text-center mt-3">
-         <a class="btn btn-primary btn-lg btn-block" href="/toy/add">Add Toy</a>
-      </div>
+        </table> 
+    </div>
+    <div class="text-center mt-3">
+        <a class="btn btn-primary btn-lg btn-block" href="/car/add">Add car</a>
+    </div>
    </div>
 </body>   
 </html> 
